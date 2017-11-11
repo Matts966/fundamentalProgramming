@@ -1,0 +1,208 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\lstset{%
+ language={C++},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+
+\title{レポート第\input {|"basename `pwd`"} 回 } %\\
+  %「型 (整数/実数/文字), 変数, 入力文, 演算」}
+\author{氏 名：  \\
+        科類・クラス： \\
+        学生証番号： \\
+        E-mail: }
+\date{\today}
+%
+\begin{document}
+\maketitle
+%
+\section{課題1}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\label{sec:results1}
+
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:01 masahiromatsui\$ ./code01 \\
+\input{|"g++ -o code01 code01.cpp && ./code01"}
+\end{quote}
+%
+\subsection{考察}
+　上記のプログラムは浮動小数点型と整数型の積を計算するものである。整数型と浮動小数点型が混ざった式では、表現できる値の範囲が多い浮動小数点型が優先され、結果もその型で返されている。表現できる値の限界を超えると今回の実行結果のようにオーバーフローが起こり、誤った値が返されてしまうので、注意が必要である。言葉としては聞いていたが、実際には目にしたことのなかったオーバーフローを体験できて、改めて型の扱いには注意しようと思った。
+
+%
+\section{課題2}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:02 masahiromatsui\$ ./code02 \\
+\input{|"g++ -o code02 code02.cpp && ./code02"}
+\end{quote}
+%
+\subsection{考察}
+例1と同じくオーバーフローが起こり、実行結果が大きくマイナスに振れている。オーバーフローを予防するには、あらかじめどの程度の計算でオーバーフローが起こってしまうのか、分かっている必要があると思うので、今回の練習で桁溢れの感覚のようなものを掴めて良かったと思う。
+%
+%
+\section{課題3}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:03 masahiromatsui\$ ./code03 \\
+\input{|"g++ -o code03 code03.cpp && ./code03"}
+\end{quote}
+%
+\subsection{考察}
+変数を使うことで、実際の数字を何度も書く煩わしさから解放されるのと、後から見たときに何を計算したかわかり易い、という点がとても良いと感じた。
+%
+\section{課題4}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:04 masahiromatsui\$ ./code04 \\
+\input{|"g++ -o code04 code04.cpp && ./code04"}
+\end{quote}
+%
+\subsection{考察}
+今回もオーバーフローが起こってしまっている。上の例1ではオーバーフローが起きていないのは、浮動小数点型が整数型よりもメモリに余裕をもっているからだろう。
+%
+\section{課題5}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:05 masahiromatsui\$ ./code05 \\
+\input{|"g++ -o code05 code05.cpp && ./code05"}
+\end{quote}
+%
+\subsection{考察}
+今回の例でも、例1と同じくオーバーフローは起こらなかった。定数の型にdoubleを用いることでメモリに大きく余裕を持つことができた結果だと思われる。授業中に言われた通り、メモリに特にこだわらなくても良い環境にある場合、double型を用いるのが懸命なのかもしれない。
+%
+
+\section{課題6}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:06 masahiromatsui\$ ./code06 \\
+\input{|"g++ -o code06 code06.cpp && ./code06"}
+\end{quote}
+%
+\subsection{考察}
+このプログラムでは、コメントを用いることで後から見て何をしているプログラムであるか分かりやすくなっているだけでなく、標準出力に日本語も用いることで、計算結果も見易いものになっている。これからプログラムを書いていく時は、後で復習したり、内容を確認するときのために、今回のようなプログラムにできるように意識していきたいと思う。
+%
+
+\section{課題7}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:07 masahiromatsui\$ ./code07 \\
+\input{|"g++ -o code07 code07.cpp && ./code07"}
+\end{quote}
+
+\subsection{考察}
+今回のプログラムでは、左詰めや表示幅を指定できるprintf関数を用いてフォーマットを整えて文章を出力する練習を行った。たくさんのオプションを覚えるのはかなり大変そうだが、コンパクトにフォーマットを指定して出力するのは、cout形式だと難しいことなので、適当な条件の出力を求められた時は、積極的に使って覚えていきたいと思った。同時にエスケープ文字も利用することで普段特殊な用途に使う文字列はそのままでは出力できないということを理解できて良かったと思う。
+%
+
+\section{課題8}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:08 masahiromatsui\$ ./code08 \\
+\input{|"g++ -o code08 code08.cpp && ./code08"}
+\end{quote}
+
+%
+\subsection{考察}
+今回のプログラムでは、初めてcinを用いて標準入力を扱い、インタラクティブな挙動を実装した。**
+や\^　が実行できず、C++では冪乗をどう計算するのか気になって調べて見たところPow関数を用いる必要があると知り、スクリプト言語に慣れてしまうとC++を不便に感じてしまって怖いな、と感じた。
+%
+
+\section{課題9}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:09 masahiromatsui\$ ./code09 \\
+\input{|"g++ -o code09 code09.cpp && ./code09"}
+\end{quote}
+%
+\subsection{考察}
+前回のプログラムの標準入力に1000で割る処理を加えただけのプログラムである。このようなパラメータの設定は、オプションなどで指定できると便利だなと、思うので、勉強してオプションによって場合分けできるプログラムを作りたいと思う。
+%
+\section{課題10}
+
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\subsection{プログラム}
+\label{sec:prog-list1}
+\lstinputlisting[numbers=left,numberstyle=\ttfamily,xleftmargin=2zw]{./code01.cpp}
+%
+\label{sec:results1}
+\subsection{実行結果}
+\begin{quote}           % 実行結果は \begin{quote} で字下げする
+MBP:10 masahiromatsui\$ ./code10 \\
+\input{|"g++ -o code10 code10.cpp && ./code10"}
+\end{quote}
+
+%
+\subsection{考察}
+今回のプログラムでは、自分で四捨五入の関数を調べたり、コメントに沿って計算を行ったりと、いつもより自由度の高い演習を行うことができた。出力結果も自分なりに納得のいくように調整できたうえ、エネルギー量についてのそれ自体が興味深い内容の計算だったため、演習が捗った。パーセンテージについては、割り算の結果をそのまま表示しているが、「約」と付することで正確性については問題ないかと思う。最終的には cout で出力したが、はじめ printf("\%-7.3f \%", 計算内容) と記述して、コンパイルが通らなかった理由については、後でじっくり確認したい。
+%
+
+\end{document}
